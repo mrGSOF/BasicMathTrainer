@@ -15,21 +15,25 @@ def Generate_Ex(op, Max):
         c = a*b
 
     elif op=='-':
-        if Max <100:
-           if a<b:
-               a,b = Swap(a,b)
-        c = a-b
+       ### Avoid negative results
+       if a<b:
+           a,b = Swap(a,b)
+       c = a-b
 
     elif op=='/':
-        c = a*b
-        a,c = Swap(a,c)
+        ### Avoid devide by zero
+        if b == 0:
+            b = 1
+        c = a
+        a *= b
 
+    ### Print the exercise
     d = input("%d %s %d = "%(a,op,b))
     d = int(d)
 
     if c == d:
-        return True
-    return False
+        return True #< Correct
+    return False #< Incorrect
 
 def Dice(Min=1, Max=7):
     x = int(random.uniform(Min,Max))
@@ -38,39 +42,38 @@ def Dice(Min=1, Max=7):
 def DoubleDice(Min=1, Max=7):
     x1 = Dice(Min, Max)
     x2 = Dice(Min, Max)
-    #print('%d, %d'%(x1,x2))
     return (x1, x2)
 
 
 again = True
-while again==True:
+while again == True:
     again = False
-    level = input('What level {A,B,C}?')
+    print('A - Easy (Numbers between 0 to 10)')
+    print('B - Medium (Numbers between 0 to 20)')
+    print('C - Hard (Numbers between 0 to 100)')
+    level = input('What level {A,B,C}? ')
     level = level.lower()
     MaxNumber = 10
     if level=='a':
-        print('Easy (0 to 10)')
         MaxNumber = 10
 
     elif level=='b':
-        print('Medium (0 to 20)')
         MaxNumber = 20
                          
     elif level=='c':
-        print('Hard (0 to 100)')
         MaxNumber = 100
     else:
         again = True
 
 again = True
 while again==True:
-    op = input('What type {+,-,*,/}?')
+    op = input('Type of math operation {+,-,*,/}? ')
     if ( (op=='+') or (op=='-') or (op=='*') or (op=='/') ):
         again = False
 
 again = True
 while again == True:
-    counter = input('How many? ')
+    counter = input('How many exercises? ')
     if counter.isdigit():
         counter = int(counter)
         again = False
