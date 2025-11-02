@@ -1,10 +1,25 @@
 import random
-import winsound
-
+try:
+    import winsound
+    def playFile(filename) -> None:
+        winsound.PlaySound(filename, winsound.SND_FILENAME)
+except:
+    try:
+        import playsound
+        def playFile(filename) -> None:
+            playsound.playsound(filename)
+    except:
+        print("No sound support\nPlease <pip install playsound>\nand retry\n")
+        def playFile(filename) -> None:
+            return
+        
 sound_path = './Sounds/'
 def Swap(a,b):
     return (b,a)
 
+def playFile(filename) -> None:
+    playsound.playsound(filename)
+    
 def Generate_Ex(op, Max):
     a, b = DoubleDice(Min=0, Max=Max)
 
@@ -16,9 +31,9 @@ def Generate_Ex(op, Max):
 
     elif op=='-':
        ### Avoid negative results
-       if a<b:
-           a,b = Swap(a,b)
-       c = a-b
+        if a<b:
+            a,b = Swap(a,b)
+        c = a-b
 
     elif op=='/':
         ### Avoid devide by zero
@@ -43,7 +58,6 @@ def DoubleDice(Min=1, Max=7):
     x1 = Dice(Min, Max)
     x2 = Dice(Min, Max)
     return (x1, x2)
-
 
 again = True
 while again == True:
@@ -84,7 +98,7 @@ while again==True:
     Correct = Generate_Ex(op, MaxNumber)
     if Correct == True:
         print('VERY NICE!!!')
-        winsound.PlaySound(sound_path+'DixieHorn.wav', winsound.SND_FILENAME)
+        playFile(sound_path+'DixieHorn.wav')
         counter = counter -1
         if counter<1:
             again=False
@@ -92,6 +106,6 @@ while again==True:
         ErrCounter = ErrCounter +1
         print('Wrong #%d, Try another one.'%(ErrCounter))
         if (ErrCounter & 1)==1:
-            winsound.PlaySound(sound_path+'HornHonk.wav', winsound.SND_FILENAME)
+            playFile(sound_path+'HornHonk.wav')
         else:
-            winsound.PlaySound(sound_path+'DeepMaleBurp.wav', winsound.SND_FILENAME)
+            playFile(sound_path+'DeepMaleBurp.wav')
