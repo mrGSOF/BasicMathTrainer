@@ -1,5 +1,5 @@
-### Cure math exercise software to train kids and teach procedural programming.
-### By: Guy Soffer (GSOF) 2024
+### Cute math exercise software to train kids and teach procedural programming.
+### By: Guy Soffer (GSOF) 2019
 
 import random
 
