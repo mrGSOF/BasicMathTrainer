@@ -1,4 +1,8 @@
+### Cure math exercise software to train kids and teach procedural programming.
+### By: Guy Soffer (GSOF) 2024
+
 import random
+
 try:
     import winsound
     print("Using winsound module")
@@ -50,10 +54,10 @@ def Generate_Ex(op, Max):
     return False #< Incorrect
 
 def Dice(Min=1, Max=7):
-    x = int(random.uniform(Min,Max))
+    x = int(random.randint(Min,Max))
     return x
 
-def DoubleDice(Min=1, Max=7):
+def DoubleDice(Min=1, Max=6):
     x1 = Dice(Min, Max)
     x2 = Dice(Min, Max)
     return (x1, x2)
@@ -62,16 +66,37 @@ def exercise(op="+", MaxNumber=10) -> bool:
     Correct = Generate_Ex(op, MaxNumber)
     if Correct == True:
         print('VERY NICE!!!')
-        playFile(sound_path+'DixieHorn.wav')
+        sndList = (sound_path+'Horn.wav',
+                   sound_path+'DixieHorn.wav',
+                   )
+        playFile(sndList[Dice(0,1)])
         return True
     else:
-        ErrCounter = ErrCounter +1
         print('Wrong #%d, Try another one.'%(ErrCounter))
-        if (ErrCounter & 1)==1:
-            playFile(sound_path+'HornHonk.wav')
-        else:
-            playFile(sound_path+'DeepMaleBurp.wav')
+        sndList = (sound_path+'HornHonk.wav',
+                   sound_path+'DeepMaleBurp.wav',
+                   sound_path+'Spring.wav',
+                   )
+        playFile(sndList[Dice(0,2)])
         return True
+
+try:
+    import pysole
+    ps = True
+except:
+    ps = False
+    print("****************************************************")
+    print("* For better visuals use <pip install liveconsole> *")
+    print("****************************************************")
+
+if ps:
+    ### For better visuals
+    pysole.probe(runRemainingCode=True,
+                 printStartupCode=False,
+                 primaryPrompt='math>> ',
+                 font='Consolas',
+                 fontSize=20,
+                 )
 
 again = True
 while again == True:
