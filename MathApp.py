@@ -1,11 +1,13 @@
 import random
 try:
     import winsound
+    print("Using winsound module")
     def playFile(filename) -> None:
         winsound.PlaySound(filename, winsound.SND_FILENAME)
 except:
     try:
         import playsound
+        print("Using playsound module")
         def playFile(filename) -> None:
             playsound.playsound(filename)
     except:
@@ -17,9 +19,6 @@ sound_path = './Sounds/'
 def Swap(a,b):
     return (b,a)
 
-def playFile(filename) -> None:
-    playsound.playsound(filename)
-    
 def Generate_Ex(op, Max):
     a, b = DoubleDice(Min=0, Max=Max)
 
@@ -59,6 +58,21 @@ def DoubleDice(Min=1, Max=7):
     x2 = Dice(Min, Max)
     return (x1, x2)
 
+def exercise(op="+", MaxNumber=10) -> bool:
+    Correct = Generate_Ex(op, MaxNumber)
+    if Correct == True:
+        print('VERY NICE!!!')
+        playFile(sound_path+'DixieHorn.wav')
+        return True
+    else:
+        ErrCounter = ErrCounter +1
+        print('Wrong #%d, Try another one.'%(ErrCounter))
+        if (ErrCounter & 1)==1:
+            playFile(sound_path+'HornHonk.wav')
+        else:
+            playFile(sound_path+'DeepMaleBurp.wav')
+        return True
+
 again = True
 while again == True:
     again = False
@@ -95,17 +109,16 @@ while again == True:
 ErrCounter = 0
 again = True
 while again==True:
-    Correct = Generate_Ex(op, MaxNumber)
-    if Correct == True:
-        print('VERY NICE!!!')
-        playFile(sound_path+'DixieHorn.wav')
+    correct = exercise(op, MaxNumber)
+    if correct == True:
         counter = counter -1
         if counter<1:
             again=False
     else:
         ErrCounter = ErrCounter +1
-        print('Wrong #%d, Try another one.'%(ErrCounter))
-        if (ErrCounter & 1)==1:
-            playFile(sound_path+'HornHonk.wav')
-        else:
-            playFile(sound_path+'DeepMaleBurp.wav')
+
+print("Try and type one of the lines below:")
+print("exercise(op='+', MaxNumber=10)")
+print("exercise(op='-', MaxNumber=20)")
+print("exercise(op='*', MaxNumber=5)")
+print("exercise(op='/', MaxNumber=8)")
