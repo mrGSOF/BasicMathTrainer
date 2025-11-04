@@ -53,7 +53,7 @@ def Generate_Ex(op, Max):
         return True #< Correct
     return False #< Incorrect
 
-def Dice(Min=1, Max=7):
+def Dice(Min=1, Max=6):
     x = int(random.randint(Min,Max))
     return x
 
@@ -69,7 +69,7 @@ def exercise(op="+", MaxNumber=10) -> bool:
         sndList = (sound_path+'Horn.wav',
                    sound_path+'DixieHorn.wav',
                    )
-        playFile(sndList[Dice(0,1)])
+        playFile(sndList[Dice(0,len(sndList)-1)])
         return True
     else:
         print('Wrong #%d, Try another one.'%(ErrCounter))
@@ -77,7 +77,7 @@ def exercise(op="+", MaxNumber=10) -> bool:
                    sound_path+'DeepMaleBurp.wav',
                    sound_path+'Spring.wav',
                    )
-        playFile(sndList[Dice(0,2)])
+        playFile(sndList[Dice(0,len(sndList)-1)])
         return True
 
 try:
@@ -137,7 +137,7 @@ while again==True:
     correct = exercise(op, MaxNumber)
     if correct == True:
         counter = counter -1
-        if counter<1:
+        if counter < 1:
             again=False
     else:
         ErrCounter = ErrCounter +1
