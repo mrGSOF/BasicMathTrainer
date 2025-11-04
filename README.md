@@ -86,13 +86,14 @@ C - Hard (Numbers between 0 to 100)
 What level {A,B,C}? a
 Type of math operation {+,-,*,/}? +
 How many exercises? 3
-2 + 5 = 7
+0 + 8 = 8
 VERY NICE!!!
-6 + 1 = 8
+2 + 9 = 11
 VERY NICE!!!
 10 + 0 = 10
 VERY NICE!!!
 ```
+<img width="889" height="554" alt="image" src="https://github.com/user-attachments/assets/e2a36595-18c2-4d6e-b120-b29b9d56908b" />
 
 - - -
 
