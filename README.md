@@ -78,11 +78,21 @@ The program will then quiz you interactively!
 
 ## 💡 Example Interaction
 
-pgsql
 
-Copy code
-
-`A - Easy (Numbers between 0 to 10) B - Medium (Numbers between 0 to 20) C - Hard (Numbers between 0 to 100) What level {A,B,C}? a Type of math operation {+,-,*,/}? + How many exercises? 3 2 + 5 = 7 VERY NICE!!! 6 + 1 = 8 VERY NICE!!! 10 + 0 = 10 VERY NICE!!!`
+```
+A - Easy (Numbers between 0 to 10)
+B - Medium (Numbers between 0 to 20)
+C - Hard (Numbers between 0 to 100)
+What level {A,B,C}? a
+Type of math operation {+,-,*,/}? +
+How many exercises? 3
+2 + 5 = 7
+VERY NICE!!!
+6 + 1 = 8
+VERY NICE!!!
+10 + 0 = 10
+VERY NICE!!!
+```
 
 - - -
 
